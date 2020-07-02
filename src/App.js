@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ConditionalSection from './sections/conditional';
+import cars from './data/cars.json';
 
 //function Hello(props){
   //return <h2>{props.title}</h2>
@@ -50,7 +52,7 @@ Title.defaultProps = {
   text: 'Titulo por defecto'
 }
 
-class Contador extends Component {
+/*class Contador extends Component {
   constructor(props){
     super(props)
     this.state = {contador: this.props.contadorInicial}
@@ -65,16 +67,48 @@ class Contador extends Component {
 
 Contador.defaultProps = {
   contadorInicial: 0
-}
+}*/
 
-class ContadorNumero extends Component {
+/*class ContadorNumero extends Component {
   render(){
   return <span>{this.props.numero}</span>
   }
 }
+*/
+
+class CarItem extends Component{
+  render(){
+    const {car} = this.props
+    return (
+      <li>
+        <p><strong>Nombre: </strong>{car.name}</p>
+        <p><strong>Marca: </strong>{car.company}</p>
+      </li>
+      )
+  }
+}
 
 function App() {
+  const numbers = [1,1,3,4,5]
   return (
+    <div>
+      <div>
+        <h4>Trabajando con listas de objetos</h4>
+        <ul>
+          {
+            cars.map(car => {
+              return <CarItem key={car.id} car={car}/>
+            })
+          }
+        </ul>
+      </div>
+      <div>
+        <h4>Trabajando con Listas</h4>
+        {numbers.map((number,index) =>{
+          return <p key={index}>Soy el número {number}</p>
+        })}
+      </div>
+      <ConditionalSection/>
     <div className="App">
       <div className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -91,9 +125,11 @@ function App() {
         title = {<h1>Este es el titulo</h1>}
       />
       <br></br>
-      <Contador contadorInicial= {5}/>
     </div>
-  );
+    </div>
+    
+    );
+    //<Contador contadorInicial= {5}/>
 }
 
 export default App;
