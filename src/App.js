@@ -40,6 +40,39 @@ class Text extends Component {
   )}
 }
 
+class Title extends Component {
+  render(){
+  return <h1>{this.props.text}</h1>
+  }
+}
+
+Title.defaultProps = {
+  text: 'Titulo por defecto'
+}
+
+class Contador extends Component {
+  constructor(props){
+    super(props)
+    this.state = {contador: this.props.contadorInicial}
+    setInterval(() => {
+      this.setState({contador: this.state.contador + 1})
+    },1000)
+  }
+  render(){
+  return <ContadorNumero numero = {this.state.contador}/>
+  }
+}
+
+Contador.defaultProps = {
+  contadorInicial: 0
+}
+
+class ContadorNumero extends Component {
+  render(){
+  return <span>{this.props.numero}</span>
+  }
+}
+
 function App() {
   return (
     <div className="App">
@@ -47,6 +80,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <Hello title = 'Welcome'/>
       </div>
+      <Title text=''/>
       <Text 
         arrayOfNumer = {[2 , 3, 10]}
         isActivated
@@ -56,6 +90,8 @@ function App() {
         text='Texto en string'
         title = {<h1>Este es el titulo</h1>}
       />
+      <br></br>
+      <Contador contadorInicial= {5}/>
     </div>
   );
 }
