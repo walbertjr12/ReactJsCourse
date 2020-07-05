@@ -5,6 +5,10 @@ import './App.css';
 import ConditionalSection from './sections/conditional';
 import cars from './data/cars.json';
 import Forms from './sections/forms';
+import FetchExample from './sections/fetch-example';
+import EjemploDeCicloDeActualizacion from './sections/life-cycle/ejemploCiclodeActualizacion';
+import EjemploDeComponentWillUnmount from './sections/life-cycle/componentWillUnmount';
+import EjemplodeComponentDidCatch from './sections/life-cycle/componentDidCatch';
 
 //function Hello(props){
   //return <h2>{props.title}</h2>
@@ -150,8 +154,12 @@ class App extends Component {
     const numbers = [1,1,3,4,5];
     return (
       <div>
+        <EjemplodeComponentDidCatch/>
+        <EjemploDeComponentWillUnmount/>
+        <EjemploDeCicloDeActualizacion/>
+        <FetchExample/>
         <Article 
-          
+          author='Walbert'
           date = {new Date().toLocaleDateString()}
           title='Articulo sobre la prop children'>
             <p>El contenido que envolvemos dentro del componente Article será enviado al componente this.props.children.</p>
